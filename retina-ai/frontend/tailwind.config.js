@@ -8,17 +8,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        void: '#050505',
+        offwhite: '#F5F5F0',
         retina: {
-          navy: '#0B0F19',
-          card: '#111827',
-          surface: '#1E293B',
-          border: '#334155',
-          cyan: '#06B6D4',
-          cyanGlow: '#0891B2',
+          red: '#8F1515',
+          accent: '#E0533C',
+          deep: '#350808',
+          card: 'rgba(20, 20, 20, 0.6)',
+          border: 'rgba(255, 255, 255, 0.1)',
+          surface: '#0d0d0d',
+          navy: '#050505',
+          cyan: '#E0533C',
+          cyanGlow: '#8F1515',
           emerald: '#10B981',
           amber: '#F59E0B',
-          rose: '#EF4444',
-          muted: '#94A3B8'
+          rose: '#8F1515',
+          muted: '#9CA3AF'
         }
       }
     },

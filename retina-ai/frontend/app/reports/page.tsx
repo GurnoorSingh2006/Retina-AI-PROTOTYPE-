@@ -49,51 +49,54 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-8 bg-[#050505] min-h-screen font-mono">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
         <div>
-          <h1 className="text-2xl font-bold text-white">Clinical Screening Reports</h1>
-          <p className="text-xs text-slate-400 mt-1">Generated diagnostic summaries with full probability profiles.</p>
+          <div className="flex items-center space-x-2 mb-2">
+            <span className="text-[10px] font-bold text-[#E0533C] uppercase tracking-widest">CLINICAL ARCHIVES</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">Clinical Screening Reports</h1>
+          <p className="text-xs text-neutral-400 mt-1">Generated diagnostic summaries with full probability profiles.</p>
         </div>
       </div>
 
       {reports.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reports.map((rpt) => (
-            <div key={rpt.id} className="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 space-y-4 glow-card flex flex-col justify-between">
+            <div key={rpt.id} className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 space-y-4 shadow-2xl flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-cyan-400">{rpt.reportNumber}</span>
-                  <span className="text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800/60 px-2 py-0.5 rounded font-semibold">
+                  <span className="text-xs font-mono font-bold text-[#E0533C]">{rpt.reportNumber}</span>
+                  <span className="text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800/60 px-2.5 py-0.5 rounded-full font-bold uppercase">
                     {rpt.status}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-base font-bold text-white">
+                  <h3 className="text-base font-bold text-white font-mono uppercase">
                     {rpt.scanData?.prediction || 'Retinal Scan'}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-0.5">
+                  <p className="text-xs text-neutral-400 mt-0.5">
                     Scan ID #{rpt.scanId} - {(rpt.scanData?.confidence ? rpt.scanData.confidence * 100 : 0).toFixed(1)}% Confidence
                   </p>
                 </div>
 
-                <p className="text-xs text-slate-300 line-clamp-3 leading-relaxed bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                <p className="text-xs text-neutral-300 line-clamp-3 leading-relaxed bg-black/60 p-3.5 rounded-2xl border border-white/5 font-sans">
                   {rpt.clinicalSummary}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-800 flex items-center justify-between gap-2">
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-2">
                 <Link
                   href={`/results/${rpt.scanId}`}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition"
+                  className="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white text-neutral-200 hover:text-black text-xs font-semibold uppercase tracking-wider transition"
                 >
                   View Scan
                 </Link>
 
                 <button
                   onClick={() => handleDownload(rpt)}
-                  className="px-3 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold transition flex items-center space-x-1.5"
+                  className="px-4 py-1.5 rounded-full bg-white hover:bg-neutral-200 text-black text-xs font-bold uppercase tracking-wider transition flex items-center space-x-1.5 shadow-lg"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download PDF</span>
@@ -103,17 +106,18 @@ export default function ReportsPage() {
           ))}
         </div>
       ) : (
-        <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-12 text-center space-y-4">
-          <FileText className="w-10 h-10 text-slate-600 mx-auto" />
-          <h3 className="text-base font-bold text-white">No Reports Generated Yet</h3>
-          <p className="text-xs text-slate-400 max-w-sm mx-auto">
-            After analyzing an OCT scan, generate and download comprehensive clinical PDF reports directly from the result page.
+        <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-16 text-center space-y-4 shadow-2xl">
+          <FileText className="w-12 h-12 text-neutral-600 mx-auto" />
+          <h3 className="text-lg font-bold text-white uppercase tracking-wider">No PDF Reports Generated Yet</h3>
+          <p className="text-xs text-neutral-400 max-w-sm mx-auto">
+            Analyze an OCT scan and click &quot;Download PDF Report&quot; to save and archive formal clinical screening summaries.
           </p>
           <Link
             href="/analyze"
-            className="inline-block px-5 py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs"
+            className="inline-flex items-center space-x-2 px-6 py-2.5 rounded-full bg-white text-black font-bold text-xs uppercase tracking-wider hover:bg-neutral-200 transition shadow-xl"
           >
-            Start New Screening
+            <span>Analyze First Scan</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       )}

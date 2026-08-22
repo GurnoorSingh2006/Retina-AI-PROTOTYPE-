@@ -56,52 +56,55 @@ export default function HistoryPage() {
     return (
       <div className="flex-1 flex items-center justify-center">
         <div className="flex flex-col items-center space-y-3">
-          <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
-          <p className="text-xs text-slate-400">Loading Scan Archives...</p>
+          <div className="w-8 h-8 border-2 border-[#8F1515] border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs text-neutral-400">Loading Scan Archives...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-8 bg-[#050505] min-h-screen font-mono">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
         <div>
-          <h1 className="text-2xl font-bold text-white">Scan History & Archives</h1>
-          <p className="text-xs text-slate-400 mt-1">Review, filter, and access previous OCT evaluations.</p>
+          <div className="flex items-center space-x-2 mb-2">
+            <span className="text-[10px] font-bold text-[#E0533C] uppercase tracking-widest">SCAN ARCHIVES</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">Scan History & Archives</h1>
+          <p className="text-xs text-neutral-400 mt-1">Review, filter, and access previous OCT evaluations.</p>
         </div>
 
         <Link
           href="/analyze"
-          className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 transition self-start sm:self-auto"
+          className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-white hover:bg-neutral-200 text-black font-bold text-xs uppercase tracking-wider shadow-xl transition self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
-          <span>New Analysis</span>
+          <span>NEW ANALYSIS</span>
         </Link>
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-col md:flex-row items-center gap-3">
+      <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-4 flex flex-col md:flex-row items-center gap-3 shadow-2xl">
         {/* Search */}
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-neutral-500 absolute left-3.5 top-3" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by Scan ID or filename..."
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition"
+            className="w-full bg-black/60 border border-white/10 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-[#8F1515] transition"
           />
         </div>
 
         {/* Condition Filter */}
         <div className="flex items-center space-x-2 w-full md:w-auto">
-          <Filter className="w-4 h-4 text-slate-500 hidden sm:block" />
+          <Filter className="w-4 h-4 text-neutral-500 hidden sm:block" />
           <select
             value={filterCondition}
             onChange={(e) => setFilterCondition(e.target.value)}
-            className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 w-full md:w-auto"
+            className="bg-black/60 border border-white/10 rounded-2xl px-4 py-2.5 text-xs text-neutral-300 focus:outline-none focus:border-[#8F1515] w-full md:w-auto"
           >
             <option value="ALL">All Conditions</option>
             <option value="NORMAL">NORMAL</option>
@@ -114,7 +117,7 @@ export default function HistoryPage() {
           <select
             value={filterPriority}
             onChange={(e) => setFilterPriority(e.target.value)}
-            className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 w-full md:w-auto"
+            className="bg-black/60 border border-white/10 rounded-2xl px-4 py-2.5 text-xs text-neutral-300 focus:outline-none focus:border-[#8F1515] w-full md:w-auto"
           >
             <option value="ALL">All Priorities</option>
             <option value="HIGH">HIGH</option>
@@ -125,44 +128,44 @@ export default function HistoryPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden glow-card">
+      <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950/60 border-b border-slate-800 text-slate-400 font-semibold">
+            <thead className="bg-black/60 border-b border-white/10 text-neutral-400 font-bold uppercase tracking-wider text-[10px]">
               <tr>
-                <th className="py-3 px-4">Scan ID</th>
-                <th className="py-3 px-4">Filename</th>
-                <th className="py-3 px-4">Condition</th>
-                <th className="py-3 px-4">Confidence</th>
-                <th className="py-3 px-4">Screening Priority</th>
-                <th className="py-3 px-4">Model</th>
-                <th className="py-3 px-4">Timestamp</th>
-                <th className="py-3 px-4 text-right">Actions</th>
+                <th className="py-3.5 px-5">Scan ID</th>
+                <th className="py-3.5 px-5">Filename</th>
+                <th className="py-3.5 px-5">Condition</th>
+                <th className="py-3.5 px-5">Confidence</th>
+                <th className="py-3.5 px-5">Screening Priority</th>
+                <th className="py-3.5 px-5">Model</th>
+                <th className="py-3.5 px-5">Timestamp</th>
+                <th className="py-3.5 px-5 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-white/5 text-neutral-300">
               {filteredScans.length > 0 ? (
                 filteredScans.map((scan) => (
-                  <tr key={scan.id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3 px-4 font-mono font-bold text-cyan-400">#{scan.id}</td>
-                    <td className="py-3 px-4 font-mono text-slate-400">{scan.originalFilename || 'oct_scan.png'}</td>
-                    <td className="py-3 px-4 font-bold text-white">{scan.prediction}</td>
-                    <td className="py-3 px-4 font-mono">{(scan.confidence * 100).toFixed(1)}%</td>
-                    <td className="py-3 px-4">
+                  <tr key={scan.id} className="hover:bg-white/5 transition">
+                    <td className="py-4 px-5 font-mono font-bold text-[#E0533C]">#{scan.id}</td>
+                    <td className="py-4 px-5 font-mono text-neutral-400">{scan.originalFilename || 'oct_scan.png'}</td>
+                    <td className="py-4 px-5 font-bold text-white">{scan.prediction}</td>
+                    <td className="py-4 px-5 font-mono">{(scan.confidence * 100).toFixed(1)}%</td>
+                    <td className="py-4 px-5">
                       <PriorityBadge priority={scan.priority} />
                     </td>
-                    <td className="py-3 px-4 text-slate-400">{scan.modelName}</td>
-                    <td className="py-3 px-4 text-slate-400">{new Date(scan.createdAt).toLocaleString()}</td>
-                    <td className="py-3 px-4 text-right space-x-2">
+                    <td className="py-4 px-5 text-neutral-400">{scan.modelName}</td>
+                    <td className="py-4 px-5 text-neutral-400">{new Date(scan.createdAt).toLocaleString()}</td>
+                    <td className="py-4 px-5 text-right space-x-2">
                       <Link
                         href={`/results/${scan.id}`}
-                        className="px-2.5 py-1 rounded bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-slate-200 font-medium transition text-[11px]"
+                        className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white text-neutral-200 hover:text-black font-semibold transition text-[11px] uppercase tracking-wider"
                       >
                         Results
                       </Link>
                       <button
                         onClick={() => handleDelete(scan.id)}
-                        className="p-1 rounded text-slate-500 hover:text-red-400 transition"
+                        className="p-1.5 rounded-full text-neutral-500 hover:text-[#E0533C] hover:bg-[#8F1515]/20 transition"
                         title="Delete Record"
                       >
                         <Trash2 className="w-3.5 h-3.5 inline" />
@@ -172,7 +175,7 @@ export default function HistoryPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={8} className="text-center py-12 text-slate-500">
+                  <td colSpan={8} className="text-center py-16 text-neutral-500">
                     <p>No matching scan records found.</p>
                   </td>
                 </tr>

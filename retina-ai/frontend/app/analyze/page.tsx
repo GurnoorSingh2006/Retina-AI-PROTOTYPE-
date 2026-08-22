@@ -134,24 +134,26 @@ export default function AnalyzePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-8">
-      <div className="text-center space-y-2">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full space-y-8 bg-[#050505] min-h-screen">
+      <div className="text-center space-y-3">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#8F1515]/20 border border-[#8F1515]/40 text-[#E0533C] text-[10px] font-mono tracking-widest uppercase">
           <Eye className="w-3.5 h-3.5" />
-          <span>Clinical Screening Studio</span>
+          <span>CLINICAL SCREENING STUDIO</span>
         </div>
-        <h1 className="text-3xl font-extrabold text-white">Upload Retinal OCT Scan</h1>
-        <p className="text-xs text-slate-400 max-w-lg mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white font-mono">
+          UPLOAD RETINAL OCT SCAN
+        </h1>
+        <p className="text-xs text-neutral-400 max-w-lg mx-auto font-mono">
           Upload an Optical Coherence Tomography B-scan for instant classification, Grad-CAM attention localization, and automated report generation.
         </p>
       </div>
 
       {error && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-xs text-red-400 flex items-start space-x-3">
+        <div className="bg-[#8F1515]/15 border border-[#8F1515]/40 rounded-2xl p-4 text-xs text-[#E0533C] flex items-start space-x-3 font-mono">
           <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="font-semibold">Analysis Error</p>
-            <p className="text-slate-400 mt-0.5">{error}</p>
+            <p className="font-bold">ANALYSIS ERROR</p>
+            <p className="text-neutral-300 mt-0.5">{error}</p>
           </div>
         </div>
       )}
@@ -161,10 +163,10 @@ export default function AnalyzePage() {
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDrop}
         onClick={() => !previewUrl && fileInputRef.current?.click()}
-        className={`relative rounded-3xl border-2 border-dashed p-8 sm:p-12 text-center transition-all ${
+        className={`relative rounded-3xl border border-dashed p-8 sm:p-12 text-center transition-all ${
           previewUrl
-            ? 'border-cyan-500/40 bg-slate-900/90'
-            : 'border-slate-800 hover:border-cyan-500/50 bg-slate-900/50 cursor-pointer glow-card'
+            ? 'border-[#8F1515]/60 bg-black/40 backdrop-blur-xl'
+            : 'border-white/15 hover:border-[#8F1515]/60 bg-black/30 backdrop-blur-md cursor-pointer hover:shadow-[0_0_30px_rgba(143,21,21,0.2)]'
         }`}
       >
         <input
@@ -177,49 +179,49 @@ export default function AnalyzePage() {
 
         {previewUrl ? (
           <div className="space-y-6">
-            <div className="relative aspect-[4/3] max-w-md mx-auto rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
+            <div className="relative aspect-[4/3] max-w-md mx-auto rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl">
               <img src={previewUrl} alt="Preview" className="w-full h-full object-contain" />
-              <div className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-mono text-cyan-400 border border-slate-700">
-                Ready for Analysis
+              <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono text-[#E0533C] border border-[#8F1515]/50 tracking-wider uppercase font-semibold">
+                SCAN LOADED
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 font-mono">
               <button
                 onClick={() => {
                   setSelectedFile(null);
                   setPreviewUrl(null);
                 }}
                 disabled={analyzing}
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 text-xs tracking-wider uppercase transition border border-white/10"
               >
-                Change Image
+                CHANGE IMAGE
               </button>
 
               <button
                 onClick={handleRunAnalysis}
                 disabled={analyzing}
-                className="px-6 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold shadow-lg shadow-cyan-500/25 transition flex items-center space-x-2 disabled:opacity-50"
+                className="px-8 py-3 rounded-full bg-white hover:bg-neutral-200 text-black text-xs font-bold tracking-widest uppercase shadow-xl transition flex items-center space-x-2 disabled:opacity-50"
               >
-                <Sparkles className="w-4 h-4" />
-                <span>Run Attention U-Net Screening</span>
+                <Sparkles className="w-4 h-4 text-[#8F1515]" />
+                <span>START ATTENTION U-NET SCREENING</span>
               </button>
             </div>
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mx-auto text-cyan-400 shadow-lg shadow-cyan-500/10">
-              <Upload className="w-8 h-8" />
+            <div className="w-16 h-16 rounded-2xl bg-[#8F1515]/20 border border-[#8F1515]/40 flex items-center justify-center mx-auto text-[#E0533C] shadow-xl shadow-[#8F1515]/20">
+              <Upload className="w-7 h-7" />
             </div>
             <div>
-              <p className="text-base font-bold text-white">Drop your OCT scan here</p>
-              <p className="text-xs text-slate-400 mt-1">Supports high-res PNG, JPG, or JPEG retinal B-scans</p>
+              <p className="text-base font-bold text-white font-mono uppercase tracking-wider">Drop your OCT scan here</p>
+              <p className="text-xs text-neutral-400 font-mono mt-1">Supports high-res PNG, JPG, or JPEG retinal B-scans</p>
             </div>
             <button
               type="button"
-              className="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold text-xs border border-slate-700 transition"
+              className="px-6 py-2.5 rounded-full bg-black/60 hover:bg-black/90 text-neutral-200 font-mono text-xs border border-white/20 hover:border-white/40 tracking-wider uppercase transition"
             >
-              Browse Local Files
+              BROWSE LOCAL FILES
             </button>
           </div>
         )}
@@ -227,49 +229,49 @@ export default function AnalyzePage() {
 
       {/* Analyzing Progress Overlay */}
       {analyzing && (
-        <div className="bg-slate-900/90 border border-cyan-500/40 rounded-2xl p-6 space-y-4 glow-cyan">
-          <div className="flex items-center justify-between">
+        <div className="bg-black/60 backdrop-blur-xl border border-[#8F1515]/60 rounded-3xl p-6 space-y-4 shadow-2xl">
+          <div className="flex items-center justify-between font-mono">
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin" />
-              <span className="text-xs font-bold text-white">AI Inference in Progress</span>
+              <div className="w-4 h-4 border-2 border-[#E0533C] border-t-transparent rounded-full animate-spin" />
+              <span className="text-xs font-bold text-white tracking-wider uppercase">AI Inference in Progress</span>
             </div>
-            <span className="text-xs font-mono text-cyan-400">{Math.round(((currentStepIndex + 1) / ANALYSIS_STEPS.length) * 100)}%</span>
+            <span className="text-xs font-bold text-[#E0533C]">{Math.round(((currentStepIndex + 1) / ANALYSIS_STEPS.length) * 100)}%</span>
           </div>
 
-          <div className="w-full h-2 bg-slate-950 rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-black rounded-full overflow-hidden border border-white/10">
             <div
-              className="h-full bg-gradient-to-r from-cyan-500 to-teal-400 transition-all duration-500"
+              className="h-full bg-gradient-to-r from-[#8F1515] to-[#E0533C] transition-all duration-500 shadow-[0_0_10px_#8F1515]"
               style={{ width: `${((currentStepIndex + 1) / ANALYSIS_STEPS.length) * 100}%` }}
             />
           </div>
 
-          <p className="text-xs text-slate-300 font-mono">
+          <p className="text-xs text-neutral-300 font-mono tracking-wider">
             {ANALYSIS_STEPS[currentStepIndex]}
           </p>
         </div>
       )}
 
       {/* Quick Sample Selector */}
-      <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-3">
+      <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 space-y-4 font-mono">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold text-white">Quick Test: Load Sample OCT Scans</span>
-          <span className="text-[10px] text-slate-500">1-Click Evaluation</span>
+          <span className="text-xs font-bold text-white tracking-wider uppercase">Quick Test: Load Sample OCT Scans</span>
+          <span className="text-[10px] text-neutral-500 tracking-wider">1-CLICK EVALUATION</span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
             { id: 'NORMAL', label: 'Healthy Retina', color: 'hover:border-emerald-500/50 hover:bg-emerald-950/20 text-emerald-400' },
-            { id: 'DME', label: 'Diabetic Edema', color: 'hover:border-amber-500/50 hover:bg-amber-950/20 text-amber-400' },
-            { id: 'DRUSEN', label: 'Drusen Deposits', color: 'hover:border-orange-500/50 hover:bg-orange-950/20 text-orange-400' },
-            { id: 'CNV', label: 'Neovascular CNV', color: 'hover:border-rose-500/50 hover:bg-rose-950/20 text-rose-400' },
+            { id: 'DME', label: 'Diabetic Edema', color: 'hover:border-[#E0533C]/50 hover:bg-[#8F1515]/20 text-[#E0533C]' },
+            { id: 'DRUSEN', label: 'Drusen Deposits', color: 'hover:border-amber-500/50 hover:bg-amber-950/20 text-amber-400' },
+            { id: 'CNV', label: 'Neovascular CNV', color: 'hover:border-[#8F1515]/50 hover:bg-[#8F1515]/20 text-[#8F1515]' },
           ].map((item) => (
             <button
               key={item.id}
               onClick={() => loadSample(item.id)}
               type="button"
-              className={`p-3 rounded-xl bg-slate-950 border border-slate-800 text-left transition flex flex-col justify-between space-y-1 ${item.color}`}
+              className={`p-4 rounded-2xl bg-black/60 border border-white/10 text-left transition flex flex-col justify-between space-y-1.5 ${item.color}`}
             >
-              <span className="text-xs font-bold text-white">{item.id}</span>
-              <span className="text-[10px] text-slate-400">{item.label}</span>
+              <span className="text-xs font-bold text-white tracking-wider">{item.id}</span>
+              <span className="text-[10px] text-neutral-400">{item.label}</span>
             </button>
           ))}
         </div>

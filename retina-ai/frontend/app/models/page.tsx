@@ -134,15 +134,17 @@ export default function ModelsPage() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-8 bg-[#050505] min-h-screen font-mono">
       {/* Header */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 glow-card">
-        <div className="flex items-center space-x-2 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-1">
+      <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div className="flex items-center space-x-2 text-[#E0533C] text-[10px] font-bold uppercase tracking-widest mb-2">
           <Layers className="w-3.5 h-3.5" />
-          <span>Model Architecture Lab</span>
+          <span>MODEL ARCHITECTURE LAB</span>
         </div>
-        <h1 className="text-3xl font-extrabold text-white">Retinal Deep Learning Architectures</h1>
-        <p className="text-xs text-slate-400 mt-2 max-w-3xl leading-relaxed">
+        <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white font-mono">
+          RETINAL DEEP LEARNING ARCHITECTURES
+        </h1>
+        <p className="text-xs text-neutral-400 mt-2 max-w-3xl leading-relaxed font-sans">
           Explore all 8 neural network architectures evaluated in the research study. Attention U-Net serves as the active production model for clinical screening and Grad-CAM spatial localization.
         </p>
       </div>
@@ -154,55 +156,55 @@ export default function ModelsPage() {
           return (
             <div
               key={model.id}
-              className={`rounded-3xl p-6 space-y-5 transition-all glow-card flex flex-col justify-between ${
+              className={`rounded-3xl p-7 space-y-5 transition-all flex flex-col justify-between backdrop-blur-xl ${
                 isProduction
-                  ? 'bg-slate-900/90 border-2 border-cyan-500/50 shadow-xl shadow-cyan-500/10'
-                  : 'bg-slate-900/60 border border-slate-800'
+                  ? 'bg-black/60 border-2 border-[#8F1515] shadow-2xl shadow-[#8F1515]/20'
+                  : 'bg-black/40 border border-white/10'
               }`}
             >
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                    className={`text-[10px] font-bold px-3 py-1 rounded-full border uppercase tracking-wider ${
                       isProduction
-                        ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
-                        : 'bg-slate-800 text-slate-400 border-slate-700'
+                        ? 'bg-[#8F1515]/30 text-[#E0533C] border-[#8F1515]/60'
+                        : 'bg-white/5 text-neutral-400 border-white/10'
                     }`}
                   >
                     {model.status}
                   </span>
-                  <span className="font-mono text-sm font-bold text-white bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
-                    {model.reported_accuracy}% Accuracy
+                  <span className="font-mono text-sm font-bold text-white bg-black/80 px-3 py-1 rounded-full border border-white/15">
+                    {model.reported_accuracy}% ACCURACY
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white">{model.name}</h3>
-                  <p className="text-xs text-cyan-400 font-medium mt-0.5">{model.category}</p>
+                  <h3 className="text-xl font-bold text-white font-mono">{model.name}</h3>
+                  <p className="text-xs text-[#E0533C] font-semibold mt-0.5 uppercase tracking-wider">{model.category}</p>
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80">
+                <p className="text-xs text-neutral-300 leading-relaxed bg-black/60 p-4 rounded-2xl border border-white/5 font-sans">
                   {model.purpose}
                 </p>
               </div>
 
               {/* Specs Table */}
-              <div className="space-y-2 text-xs text-slate-400 border-t border-slate-800 pt-4 divide-y divide-slate-800/60">
-                <div className="flex justify-between pt-1">
-                  <span>Architecture:</span>
-                  <span className="font-medium text-slate-200 text-right max-w-[60%] line-clamp-1">{model.architecture}</span>
+              <div className="space-y-2 text-xs text-neutral-400 border-t border-white/10 pt-4 divide-y divide-white/5 font-mono">
+                <div className="flex justify-between pt-1.5">
+                  <span className="text-[11px] uppercase">ARCHITECTURE:</span>
+                  <span className="font-medium text-neutral-200 text-right max-w-[60%] line-clamp-1">{model.architecture}</span>
                 </div>
-                <div className="flex justify-between pt-1">
-                  <span>Parameters:</span>
-                  <span className="font-mono text-slate-300">{model.params}</span>
+                <div className="flex justify-between pt-1.5">
+                  <span className="text-[11px] uppercase">PARAMETERS:</span>
+                  <span className="text-neutral-200">{model.params}</span>
                 </div>
-                <div className="flex justify-between pt-1">
-                  <span>Input Shape:</span>
-                  <span className="font-mono text-slate-300">{model.input_shape}</span>
+                <div className="flex justify-between pt-1.5">
+                  <span className="text-[11px] uppercase">INPUT SHAPE:</span>
+                  <span className="text-neutral-200">{model.input_shape}</span>
                 </div>
-                <div className="flex justify-between pt-1">
-                  <span>Loss Function:</span>
-                  <span className="font-mono text-slate-300">{model.loss}</span>
+                <div className="flex justify-between pt-1.5">
+                  <span className="text-[11px] uppercase">LOSS FUNCTION:</span>
+                  <span className="text-neutral-200">{model.loss}</span>
                 </div>
               </div>
             </div>
