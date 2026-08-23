@@ -53,7 +53,7 @@ export default function RegisterPage() {
             <Eye className="w-6 h-6 text-[#E0533C]" />
           </div>
           <h1 className="text-2xl font-black tracking-tight text-white uppercase font-mono">CLINICIAN REGISTRATION</h1>
-          <p className="text-xs text-neutral-400 font-mono">Join the RetinaAI Screening Network</p>
+          <p className="text-xs text-neutral-400 font-mono">Join the OCTalyze Screening Network</p>
         </div>
 
         {error && (
@@ -88,7 +88,7 @@ export default function RegisterPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="alex.rivera@retina.org"
+                placeholder="alex.rivera@hospital.org"
                 className="w-full bg-black/60 border border-white/10 rounded-xl pl-10 pr-3.5 py-2.5 text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-[#8F1515] transition"
               />
             </div>

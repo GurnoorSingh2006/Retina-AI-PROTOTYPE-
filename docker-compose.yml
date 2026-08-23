@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: retina-postgres
+    environment:
+      POSTGRES_DB: retinaai
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - retina-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: retina-ai-service
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - ALLOW_ORIGINS=http://localhost:3000,http://frontend:3000,http://localhost:8080
+    volumes:
+      - ./ai-service/models:/app/models
+    networks:
+      - retina-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: retina-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/retinaai
+      - DATABASE_DRIVER=org.postgresql.Driver
+      - DATABASE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgrespassword
+      - JWT_SECRET=RetinaAISecretKeyForMedicalScreeningHackathon2026SecureKeyWithHighEntropy998877
+      - AI_SERVICE_URL=http://ai-service:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ai-service:
+        condition: service_started
+    networks:
+      - retina-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: retina-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8080/api
+    depends_on:
+      - backend
+    networks:
+      - retina-network
+
+networks:
+  retina-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

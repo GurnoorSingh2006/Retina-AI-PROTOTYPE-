@@ -157,7 +157,7 @@ export default function CinematicHomePage() {
           className="flex items-center space-x-2 text-xs font-mono font-bold tracking-widest text-[#F5F5F0] uppercase"
         >
           <span className="w-2 h-2 rounded-full bg-[#8F1515] animate-ping inline-block" />
-          <span>RETINA AI</span>
+          <span>OCTalyze</span>
         </Link>
 
         {/* Desktop Nav Links */}
@@ -313,7 +313,7 @@ export default function CinematicHomePage() {
           <div className="flex items-center justify-between border-b border-white/20 pb-4 drop-shadow-md">
             <div className="flex items-center space-x-2 text-white font-bold">
               <span className="w-2 h-2 rounded-full bg-[#8F1515] animate-ping" />
-              <span>RETINA AI // SYSTEM-01</span>
+              <span>OCTalyze // SYSTEM-01</span>
             </div>
             <div className="text-right text-[#E0533C] font-semibold animate-subtle-pulse">
               RETINAL ANALYSIS INITIALIZING...
@@ -441,7 +441,7 @@ export default function CinematicHomePage() {
             </div>
 
             <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-black uppercase tracking-tighter text-white leading-none">
-              RETINA <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8F1515] to-[#E0533C]">AI</span>
+              OCT<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8F1515] to-[#E0533C]">alyze</span>
             </h1>
 
             <p className="text-sm sm:text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed">
@@ -576,7 +576,7 @@ export default function CinematicHomePage() {
                   onMouseLeave={() => setCursorHover('default')}
                   className="px-8 py-4 rounded-full bg-white text-black font-bold text-xs font-mono tracking-widest uppercase hover:scale-105 transition-all shadow-xl flex items-center space-x-2"
                 >
-                  <span>LAUNCH RETINA AI STUDIO</span>
+                  <span>LAUNCH OCTalyze STUDIO</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -587,7 +587,7 @@ export default function CinematicHomePage() {
         {/* Editorial Minimal Footer */}
         <footer className="max-w-7xl mx-auto px-6 sm:px-12 py-16 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-[11px] text-neutral-400 uppercase tracking-widest">
           <div>
-            RETINA AI (c) 2026 // WE SEE WHAT YOU DON&apos;T.
+            OCTALYZE (c) 2026 // WE SEE WHAT YOU DON&apos;T.
           </div>
           <div className="flex items-center space-x-6">
             <Link href="/analyze" className="hover:text-white transition">SCAN STUDIO</Link>

@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
-import { Eye, Activity, History, FileText, LogOut, LogIn, UserPlus } from 'lucide-react';
+import { Eye, Activity, History, BookOpen, LogOut, LogIn, UserPlus } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -14,9 +14,9 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/dashboard', label: 'Dashboard', icon: Activity, authRequired: true },
-    { href: '/analyze', label: 'Analyze OCT', icon: Eye, authRequired: true },
-    { href: '/history', label: 'History', icon: History, authRequired: true },
-    { href: '/reports', label: 'Reports', icon: FileText, authRequired: true },
+    { href: '/analyze', label: 'Scan Studio', icon: Eye, authRequired: true },
+    { href: '/history', label: 'Patient History', icon: History, authRequired: true },
+    { href: '/pathologies', label: 'Diseases Guide', icon: BookOpen, authRequired: false },
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function Navbar() {
           <div>
             <div className="flex items-center space-x-2">
               <span className="font-extrabold text-base tracking-tighter text-white">
-                RETINA<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8F1515] to-[#E0533C]">AI</span>
+                OCT<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8F1515] to-[#E0533C]">alyze</span>
               </span>
               <span className="text-[9px] font-mono font-bold bg-[#8F1515]/20 text-[#E0533C] border border-[#8F1515]/40 px-1.5 py-0.2 rounded">STUDIO</span>
             </div>

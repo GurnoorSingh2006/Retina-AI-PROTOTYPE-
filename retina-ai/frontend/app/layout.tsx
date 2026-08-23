@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'RetinaAI - Explainable AI-Powered OCT Retinal Screening',
+  title: 'OCTalyze - Explainable AI-Powered OCT Retinal Screening',
   description: 'Clinical-grade AI screening platform for OCT retinal images with Attention U-Net and Grad-CAM explainability.',
 };
 

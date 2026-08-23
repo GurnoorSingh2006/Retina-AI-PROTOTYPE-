@@ -62,13 +62,21 @@ export default function DashboardPage() {
           <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">Welcome, {user?.name}</h1>
           <p className="text-xs text-neutral-400 mt-1">Review active scans, priority alerts, and recent patient analyses.</p>
         </div>
-        <Link
-          href="/analyze"
-          className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-white hover:bg-neutral-200 text-black font-bold text-xs uppercase tracking-wider shadow-xl transition self-start sm:self-auto"
-        >
-          <Upload className="w-4 h-4" />
-          <span>UPLOAD NEW OCT</span>
-        </Link>
+        <div className="flex items-center space-x-3 self-start sm:self-auto">
+          <Link
+            href="/pathologies"
+            className="inline-flex items-center space-x-2 px-5 py-3 rounded-full bg-black/60 hover:bg-white/10 text-white border border-white/20 font-bold text-xs uppercase tracking-wider transition"
+          >
+            <span>DISEASES GUIDE</span>
+          </Link>
+          <Link
+            href="/analyze"
+            className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-white hover:bg-neutral-200 text-black font-bold text-xs uppercase tracking-wider shadow-xl transition"
+          >
+            <Upload className="w-4 h-4" />
+            <span>UPLOAD NEW OCT</span>
+          </Link>
+        </div>
       </div>
 
       {/* Metric Cards */}

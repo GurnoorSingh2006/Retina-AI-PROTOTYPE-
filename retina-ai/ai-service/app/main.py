@@ -14,7 +14,7 @@ from app.inference import engine, CLASSES, PRIORITY_MAP, DESCRIPTIONS
 from app.model_factory import get_model_catalog
 
 app = FastAPI(
-    title="RetinaAI Inference Service",
+    title="OCTalyze Inference Service",
     description="Explainable AI-Powered OCT Retinal Screening Service based on Colab Research",
     version="1.0.0"
 )
@@ -36,7 +36,7 @@ app.add_middleware(
 def health_check():
     return {
         "status": "UP",
-        "service": "RetinaAI Engine",
+        "service": "OCTalyze Engine",
         "version": "1.0.0",
         "production_model": engine.model_name,
         "reported_accuracy": f"{engine.model_accuracy}%",

@@ -16,7 +16,7 @@ public class HealthController {
     public ResponseEntity<Map<String, Object>> healthCheck() {
         Map<String, Object> health = new LinkedHashMap<>();
         health.put("status", "UP");
-        health.put("service", "RetinaAI Spring Boot Backend");
+        health.put("service", "OCTalyze Spring Boot Backend");
         health.put("version", "1.0.0");
         health.put("timestamp", Instant.now().toString());
         health.put("uptimeSeconds", ManagementFactory.getRuntimeMXBean().getUptime() / 1000);

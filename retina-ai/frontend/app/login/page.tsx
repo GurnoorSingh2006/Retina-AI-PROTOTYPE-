@@ -41,7 +41,7 @@ export default function LoginPage() {
   };
 
   const handleDemoLogin = async () => {
-    setEmail('demo.clinician@retinaai.org');
+    setEmail('demo.clinician@octalyze.org');
     setPassword('Clinician2026!');
     setError('');
     setLoading(true);
@@ -52,7 +52,7 @@ export default function LoginPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: 'Dr. Sarah Lin (Retinal Specialist)',
-          email: 'demo.clinician@retinaai.org',
+          email: 'demo.clinician@octalyze.org',
           password: 'Clinician2026!',
           role: 'CLINICIAN',
         }),
@@ -62,7 +62,7 @@ export default function LoginPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: 'demo.clinician@retinaai.org',
+          email: 'demo.clinician@octalyze.org',
           password: 'Clinician2026!',
         }),
       });
