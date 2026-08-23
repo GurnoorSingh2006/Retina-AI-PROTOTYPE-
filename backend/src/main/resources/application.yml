@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: retina-ai-backend
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:retinadb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
+    username: ${DATABASE_USER:sa}
+    password: ${DATABASE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: ${DATABASE_DIALECT:org.hibernate.dialect.H2Dialect}
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:RetinaAISecretKeyForMedicalScreeningHackathon2026SecureKeyWithHighEntropy998877}
+    expiration-ms: 86400000
+  ai-service:
+    url: ${AI_SERVICE_URL:http://localhost:8000}
+
+logging:
+  level:
+    com.retinaai: INFO
